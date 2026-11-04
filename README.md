@@ -18,7 +18,7 @@
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
 | Caroline Chelsea Putri | 123430069 | caroline123430069 | ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
-| ✍️ | ✍️ | ✍️ | ✍️ |
+| Aprillia Cindy | 123430077 | aprillia123430077-ux | ✍️ |
 | ✍️ | ✍️ | ✍️ | ✍️ |
 
 ## 1. Pertanyaan
