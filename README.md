@@ -17,9 +17,9 @@
 
 | Nama | NIM | Username GitHub | Kontribusi utama |
 |---|---|---|---|
-| Caroline Chelsea Putri | 123430069 | caroline123430069 | ✍️ misal: menjalankan eksperimen, menulis Bagian 3 |
-| Aprillia Cindy | 123430077 | aprillia123430077-ux | ✍️ |
-| ✍️ | ✍️ | ✍️ | ✍️ |
+| Caroline Chelsea Putri | 123430069 | caroline123430069 | Implementasi dan pelaksanaan eksperimen |
+| Aprillia Cindy | 123430077 | aprillia123430077-ux | Penyusunan skenario, hipotesis, dan laporan |
+| Ulfa Annisa | 123430081 | ulfa123430081-oss | Analisis hasil dan penyusunan laporan |
 
 ## 1. Pertanyaan
 
@@ -50,8 +50,11 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 
 Contoh augmentasi yang dicoba:
 
-![Contoh augmentasi](hasil/augmentasi_flip.png)
-<!-- Ganti nama file sesuai skenario kalian (lihat isi folder hasil/). -->
+![Augmentasi Flip](hasil/augmentasi_flip.png)
+
+![Augmentasi Rotasi](hasil/augmentasi_rotasi.png)
+
+![Augmentasi Kecerahan dan Kontras](hasil/augmentasi_kecerahan_dan_kontras.png)
 
 ## 4. Hasil
 
@@ -68,7 +71,7 @@ Eksperimen dilakukan menggunakan 200 citra latih, 40 epoch, dan 3 ulangan untuk 
 
 ## 5. Analisis peta kesalahan
 
-![Peta kesalahan](hasil/peta_kesalahan.png)
+![Peta Kesalahan Segmentasi](hasil/peta_kesalahan.png)
 
 <!-- Hijau = benar, merah = false positive, biru = false negative.
      Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
