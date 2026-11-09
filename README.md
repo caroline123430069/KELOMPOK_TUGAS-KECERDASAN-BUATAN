@@ -29,10 +29,10 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 
 <!-- Isi dari Bagian 2 notebook. Pastikan CEPAT = False untuk hasil akhir. -->
 
-- Dataset: Kvasir-SEG (1000 citra kolonoskopi + mask polip), diperkecil ke 128 × 128 piksel.
-- Data uji: 200 citra (tetap). Data latih: ✍️ citra per ulangan.
-- Model: U-Net mini (±0,5 juta parameter), ✍️ epoch, ✍️ ulangan per skenario.
-- Dijalankan di: ✍️ (misal: Google Colab T4 / laptop CPU / Mac M1).
+- Dataset: Kvasir-SEG (1000 citra kolonoskopi dan mask polip), diperkecil ke 128 × 128 piksel.
+- Data uji: 200 citra (tetap). Data latih: 200 citra per ulangan.
+- Model: U-Net Mini (±0,5 juta parameter), 40 epoch, 3 ulangan per skenario.
+- Dijalankan di: Google Colab dengan GPU NVIDIA Tesla T4.
 
 ![Contoh data](hasil/contoh_data.png)
 
@@ -55,9 +55,14 @@ Contoh augmentasi yang dicoba:
 
 ## 4. Hasil
 
-<!-- Tempel isi hasil/ringkasan.md di sini. -->
+Eksperimen dilakukan menggunakan 200 citra latih, 40 epoch, dan 3 ulangan untuk setiap skenario. Evaluasi dilakukan menggunakan metrik Dice dan Intersection over Union (IoU).
 
-✍️ tempel tabel dari `hasil/ringkasan.md`
+| Skenario | Dice (rata-rata ± sb) | IoU (rata-rata ± sb) | Dice tiap ulangan |
+|---|---|---|---|
+| Tanpa augmentasi | 0.574 ± 0.019 | 0.461 ± 0.026 | 0.547, 0.588, 0.586 |
+| Flip | **0.632 ± 0.041** | **0.527 ± 0.037** | 0.582, 0.631, 0.682 |
+| Rotasi | 0.607 ± 0.027 | 0.495 ± 0.020 | 0.601, 0.641, 0.577 |
+| Kecerahan & kontras | 0.543 ± 0.030 | 0.434 ± 0.029 | 0.583, 0.537, 0.510 |
 
 ![Perbandingan Dice](hasil/perbandingan.png)
 
@@ -69,20 +74,36 @@ Contoh augmentasi yang dicoba:
      Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
      Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
 
-✍️
+Peta kesalahan menunjukkan hasil segmentasi model pada citra uji. Warna hijau menunjukkan True Positive (TP), merah menunjukkan False Positive (FP), dan biru menunjukkan False Negative (FN).
+
+Pada citra uji yang sulit, beberapa skenario masih mengalami kesalahan segmentasi. Pada contoh pertama, Kecerahan & kontras memperoleh Dice 0.48, sedangkan Tanpa augmentasi dan Flip memperoleh Dice 0.00. Rotasi memperoleh Dice 0.02.
+
+Pada contoh kedua, seluruh skenario memperoleh Dice 0.00. Hal ini menunjukkan bahwa model masih kesulitan melakukan segmentasi pada beberapa karakteristik polip.
+
+Pada citra yang lebih mudah, seluruh skenario menunjukkan hasil segmentasi yang lebih baik dengan Dice sekitar 0.90–0.98.
 
 ## 6. Pembahasan & kesimpulan
 
 <!-- Bandingkan hasil dengan hipotesis di Bagian 3. Hipotesis yang ternyata salah tetap bernilai,
      asalkan dijelaskan kenapa. Perbedaan kecil (lebih kecil dari simpangan baku) belum tentu berarti. -->
 
-✍️
+Hasil eksperimen menunjukkan bahwa augmentasi Flip memperoleh performa terbaik dengan rata-rata Dice 0.632 dan IoU 0.527. Rotasi menempati urutan kedua dengan Dice 0.607 dan IoU 0.495.
+
+Skenario Flip dan Rotasi menunjukkan peningkatan performa dibandingkan tanpa augmentasi. Hasil ini mendukung hipotesis bahwa variasi orientasi citra dapat membantu model mempelajari karakteristik polip dari sudut pandang yang berbeda.
+
+Sebaliknya, Kecerahan & kontras memperoleh Dice 0.543 dan IoU 0.434, lebih rendah dibandingkan baseline. Dengan demikian, hipotesis peningkatan performa melalui variasi pencahayaan tidak didukung oleh hasil eksperimen ini.
+
+Kesimpulannya, pada konfigurasi penelitian ini, Flip merupakan augmentasi yang memberikan hasil segmentasi terbaik. Namun, beberapa citra masih menghasilkan kesalahan segmentasi sehingga diperlukan pengujian lebih lanjut untuk meningkatkan kemampuan generalisasi model.
 
 ## 7. Pembagian kerja
 
 <!-- Siapa mengerjakan apa. Penilaian proses kerja dilihat dari riwayat commit tiap anggota. -->
 
-✍️
+| Nama | NIM | Kontribusi utama |
+|---|---|---|
+| Caroline Chelsea Putri | 123430069 | Menentukan dan mengimplementasikan skenario augmentasi pada notebook Google Colab, mengatur parameter eksperimen, menjalankan pelatihan U-Net sebanyak 3 ulangan, serta mengumpulkan dan merekap hasil evaluasi Dice dan IoU. |
+| Aprillia Cindy | 123430077 | Membantu menentukan skenario augmentasi, menyusun alasan klinis dan hipotesis setiap skenario, mendokumentasikan pengaturan eksperimen, serta menyusun bagian metode dan hasil pada README. |
+| Ulfa Annisa | 123430081 | Membantu meninjau penerapan skenario augmentasi, menganalisis hasil perbandingan Dice dan IoU serta peta kesalahan segmentasi, dan menyusun bagian pembahasan, kesimpulan, serta dokumentasi akhir laporan. |
 
 ## 8. Penggunaan AI
 
@@ -90,7 +111,7 @@ Contoh augmentasi yang dicoba:
      Contoh: "Claude Code (CLI) untuk menulis skenario augmentasi dan memperbaiki error di Bagian 4.
      Draf Bagian 6 ditulis sendiri, lalu dirapikan bahasanya dengan bantuan AI." -->
 
-✍️
+AI (ChatGPT) digunakan sebagai alat bantu dalam mendiskusikan skenario augmentasi, menyusun hipotesis dan alasan klinis, memahami hasil evaluasi Dice dan IoU, serta merapikan penulisan laporan. Seluruh pemilihan skenario, pelaksanaan eksperimen, pemeriksaan hasil, dan keputusan akhir dilakukan oleh anggota kelompok.
 
 ## Cara menjalankan ulang
 
