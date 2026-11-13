@@ -91,7 +91,7 @@ Pada citra yang lebih mudah, seluruh skenario menunjukkan hasil segmentasi yang 
 <!-- Bandingkan hasil dengan hipotesis di Bagian 3. Hipotesis yang ternyata salah tetap bernilai,
      asalkan dijelaskan kenapa. Perbedaan kecil (lebih kecil dari simpangan baku) belum tentu berarti. -->
 
-Hasil eksperimen menunjukkan bahwa augmentasi Flip memperoleh performa terbaik dengan rata-rata Dice 0.632 dan IoU 0.527. Rotasi menempati urutan kedua dengan Dice 0.607 dan IoU 0.495.
+Hasil eksperimen menunjukkan bahwa augmentasi Flip memperoleh performa terbaik dengan rata-rata Dice 0.632 dan IoU 0.527. Rotasi menempati urutan kedua dengan Dice 0.607 dan IoU 0.495..
 
 Skenario Flip dan Rotasi menunjukkan peningkatan performa dibandingkan tanpa augmentasi. Hasil ini mendukung hipotesis bahwa variasi orientasi citra dapat membantu model mempelajari karakteristik polip dari sudut pandang yang berbeda.
 
