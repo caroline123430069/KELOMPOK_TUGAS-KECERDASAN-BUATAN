@@ -81,13 +81,11 @@ Peningkatan skor pada skenario Flip dan Rotasi menunjukkan bahwa variasi orienta
      Pertanyaan pemandu: Polip seperti apa yang sering terlewat (kecil? datar? warna mirip dinding usus?)
      Apa yang sering dikira polip padahal bukan? Apakah augmentasi memperbaiki kasus sulit? -->
 
-Peta kesalahan menunjukkan hasil segmentasi model pada citra uji. Warna hijau menunjukkan True Positive (TP), merah menunjukkan False Positive (FP), dan biru menunjukkan False Negative (FN).
+Peta kesalahan menunjukkan hasil segmentasi model pada citra uji. Warna hijau menunjukkan True Positive (TP), merah menunjukkan False Positive (FP), dan biru menunjukkan False Negative (FN):
 
-Pada citra uji yang sulit, beberapa skenario masih mengalami kesalahan segmentasi. Pada contoh pertama, Kecerahan & kontras memperoleh Dice 0.48, sedangkan Tanpa augmentasi dan Flip memperoleh Dice 0.00. Rotasi memperoleh Dice 0.02.
+Pada citra uji sulit, seluruh skenario menunjukkan tantangan berat ketika mendeteksi polip dengan karakteristik kompleks. Pada sampel uji sulit pertama, skenario Kecerahan & kontras memperoleh skor Dice 0,48, sementara skenario Tanpa tambahan dan Flip gagal total dengan skor Dice 0,00, serta Rotasi sebesar 0,02. Pada sampel uji sulit kedua, seluruh skenario mencatatkan skor Dice 0,00, yang mengindikasikan keterbatasan model dalam mengenali bentuk morfologi polip tertentu.
 
-Pada contoh kedua, seluruh skenario memperoleh Dice 0.00. Hal ini menunjukkan bahwa model masih kesulitan melakukan segmentasi pada beberapa karakteristik polip.
-
-Pada citra yang lebih mudah, seluruh skenario menunjukkan hasil segmentasi yang lebih baik dengan Dice sekitar 0.90–0.98.
+Pada citra uji mudah terjadi sebaliknya, ketika diuji pada citra dengan kontras visual dan batas anatomis yang jelas, seluruh skenario mampu menunjukkan performa segmentasi yang sangat baik dengan perolehan skor Dice tinggi di kisaran 0,90 hingga 0,98.
 
 ## 6. Pembahasan & kesimpulan
 
