@@ -47,6 +47,7 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 | Flip | v2.RandomHorizontalFlip() dan v2.RandomVerticalFlip() | Orientasi citra kolonoskopi dapat bervariasi akibat pergerakan dan posisi kamera endoskop. | Dice diperkirakan naik. |
 | Rotasi | v2.RandomRotation(degrees=15) | Sudut pengambilan citra dapat berubah mengikuti arah pergerakan endoskop. | Dice diperkirakan naik. |
 | Kecerahan & Kontras | v2.ColorJitter(brightness=0.3, contrast=0.3) | Intensitas pencahayaan dan kontras dapat bervariasi selama pemeriksaan kolonoskopi. | Dice diperkirakan naik. |
+| Hue (Rona Warna) | v2.ColorJitter(hue=0.1) | Warna kemerahan tidak aman untuk diubah, supaya sistem bisa dengan mudah mendeteksi polip yang berwarna kemerahan sehingga hue tidak perlu diubah. | Dice diperkirakan sama. |
 
 Contoh augmentasi yang dicoba:
 
