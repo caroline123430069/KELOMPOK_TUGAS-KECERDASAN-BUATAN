@@ -36,12 +36,6 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 
 ![Contoh data](hasil/contoh_data.png)
 
-Dataset Kvasir-SEG digunakan sebagai sumber data citra kolonoskopi beserta mask segmentasi polip. Seluruh citra dan mask diproses menggunakan ukuran 128 × 128 piksel agar memiliki dimensi yang seragam sebelum dimasukkan ke dalam model U-Net Mini.
-
-Data dibagi menjadi data pelatihan dan data pengujian. Data pengujian dipertahankan tetap pada seluruh skenario untuk memastikan evaluasi dilakukan menggunakan data yang sama. Sementara itu, data pelatihan digunakan untuk melatih model dengan variasi augmentasi yang berbeda.
-
-Setiap skenario dijalankan sebanyak tiga kali pengulangan dengan konfigurasi pelatihan yang sama, yaitu 40 epoch. Penggunaan pengulangan bertujuan untuk mengamati konsistensi performa model terhadap variasi hasil pelatihan.
-
 ## 3. Skenario augmentasi & hipotesis
 
 <!-- Tulis bagian ini SEBELUM menjalankan eksperimen. Commit dulu, baru jalankan.
@@ -74,6 +68,10 @@ Eksperimen dilakukan menggunakan 200 citra latih, 40 epoch, dan 3 ulangan untuk 
 | Kecerahan & kontras | 0.543 ± 0.030 | 0.434 ± 0.029 | 0.583, 0.537, 0.510 |
 
 ![Perbandingan Dice](hasil/perbandingan.png)
+
+Berdasarkan hasil evaluasi eksperimen menggunakan 200 citra latih, 40 epoch, dan 3 ulangan, performa model U-Net Mini menunjukkan variasi yang signifikan di setiap skenario augmentasi. Berdasarkan metrik Dice dan Intersection over Union (IoU), skenario Balik (Flip) mencatatkan performa tertinggi dengan rata-rata skor Dice sebesar 0,632 ± 0,041 dan IoU 0,527 ± 0,037, disusul oleh skenario Rotasi pada posisi kedua dengan rata-rata Dice 0,607 ± 0,027. Sebaliknya, model baseline (Tanpa tambahan) memperoleh rata-rata Dice 0,574 ± 0,019, sedangkan skenario Kecerahan & kontras mencatatkan hasil terendah yaitu 0,543 ± 0,030 yang berada di bawah performa tanpa augmentasi.
+
+Peningkatan skor pada skenario Flip dan Rotasi menunjukkan bahwa variasi orientasi spasial efektif membantu model mempelajari morfologi polip dari sudut pandang endoskop yang dinamis. Sebaliknya, penurunan performa pada skenario Kecerahan & kontras mengindikasikan bahwa manipulasi pencahayaan secara acak berpotensi mendistorsi detail tekstur dan batas mukosa usus, sehingga tidak mendukung peningkatan akurasi segmentasi. Selain itu, garis simpangan baku pada diagram batang dan variasi nilai pada tiap ulangan mencerminkan fluktuasi kestabilan pelatihan yang memerlukan optimasi lanjutan.
 
 ## 5. Analisis peta kesalahan
 
