@@ -36,12 +36,6 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 
 ![Contoh data](hasil/contoh_data.png)
 
-Dataset Kvasir-SEG digunakan sebagai sumber data citra kolonoskopi beserta mask segmentasi polip. Seluruh citra dan mask diproses menggunakan ukuran 128 × 128 piksel agar memiliki dimensi yang seragam sebelum dimasukkan ke dalam model U-Net Mini.
-
-Data dibagi menjadi data pelatihan dan data pengujian. Data pengujian dipertahankan tetap pada seluruh skenario untuk memastikan evaluasi dilakukan menggunakan data yang sama. Sementara itu, data pelatihan digunakan untuk melatih model dengan variasi augmentasi yang berbeda.
-
-Setiap skenario dijalankan sebanyak tiga kali pengulangan dengan konfigurasi pelatihan yang sama, yaitu 40 epoch. Penggunaan pengulangan bertujuan untuk mengamati konsistensi performa model terhadap variasi hasil pelatihan.
-
 ## 3. Skenario augmentasi & hipotesis
 
 <!-- Tulis bagian ini SEBELUM menjalankan eksperimen. Commit dulu, baru jalankan.
