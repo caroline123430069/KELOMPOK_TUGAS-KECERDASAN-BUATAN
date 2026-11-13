@@ -70,6 +70,10 @@ Eksperimen dilakukan menggunakan 200 citra latih, 40 epoch, dan 3 ulangan untuk 
 
 ![Perbandingan Dice](hasil/perbandingan.png)
 
+Berdasarkan hasil evaluasi eksperimen menggunakan 200 citra latih, 40 epoch, dan 3 ulangan, performa model U-Net Mini menunjukkan variasi yang signifikan di setiap skenario augmentasi. Berdasarkan metrik Dice dan Intersection over Union (IoU), skenario Balik (Flip) mencatatkan performa tertinggi dengan rata-rata skor Dice sebesar 0,632 ± 0,041 dan IoU 0,527 ± 0,037, disusul oleh skenario Rotasi pada posisi kedua dengan rata-rata Dice 0,607 ± 0,027. Sebaliknya, model baseline (Tanpa tambahan) memperoleh rata-rata Dice 0,574 ± 0,019, sedangkan skenario Kecerahan & kontras mencatatkan hasil terendah yaitu 0,543 ± 0,030 yang berada di bawah performa tanpa augmentasi.
+
+Peningkatan skor pada skenario Flip dan Rotasi menunjukkan bahwa variasi orientasi spasial efektif membantu model mempelajari morfologi polip dari sudut pandang endoskop yang dinamis. Sebaliknya, penurunan performa pada skenario Kecerahan & kontras mengindikasikan bahwa manipulasi pencahayaan secara acak berpotensi mendistorsi detail tekstur dan batas mukosa usus, sehingga tidak mendukung peningkatan akurasi segmentasi. Selain itu, garis simpangan baku pada diagram batang dan variasi nilai pada tiap ulangan mencerminkan fluktuasi kestabilan pelatihan yang memerlukan optimasi lanjutan.
+
 ## 5. Analisis peta kesalahan
 
 ![Peta Kesalahan Segmentasi](hasil/peta_kesalahan.png)
