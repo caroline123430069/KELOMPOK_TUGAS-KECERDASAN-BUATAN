@@ -44,9 +44,9 @@ Augmentasi apa yang membantu U-Net menemukan polip pada citra kolonoskopi, dan a
 | Skenario | Augmentasi (kode) | Alasan klinis | Hipotesis: Dice naik/turun/sama? |
 |---|---|---|---|
 | Tanpa augmentasi | — | Pembanding | — |
-| Flip | v2.RandomHorizontalFlip() dan v2.RandomVerticalFlip() | Orientasi citra kolonoskopi dapat bervariasi akibat pergerakan dan posisi kamera endoskop. | Dice diperkirakan naik. |
-| Rotasi | v2.RandomRotation(degrees=15) | Sudut pengambilan citra dapat berubah mengikuti arah pergerakan endoskop. | Dice diperkirakan naik. |
-| Kecerahan & Kontras | v2.ColorJitter(brightness=0.3, contrast=0.3) | Intensitas pencahayaan dan kontras dapat bervariasi selama pemeriksaan kolonoskopi. | Dice diperkirakan naik. |
+| Flip | v2.RandomHorizontalFlip() dan v2.RandomVerticalFlip() | Orientasi citra kolonoskopi dapat bervariasi akibat pergerakan dan posisi kamera endoskop. | Dice diperkirakan meningkat karena model memperoleh variasi orientasi citra.|
+| Rotasi | v2.RandomRotation(degrees=15) | Sudut pengambilan citra dapat berubah mengikuti arah pergerakan endoskop. | Dice diperkirakan meningkat karena model lebih toleran terhadap perubahan sudut citra. |
+| Kecerahan & Kontras | v2.ColorJitter(brightness=0.3, contrast=0.3) | Intensitas pencahayaan dan kontras dapat bervariasi selama pemeriksaan kolonoskopi. | Dice diperkirakan meningkat apabila variasi yang diberikan masih merepresentasikan kondisi visual yang realistis. |
 
 Contoh augmentasi yang dicoba:
 
